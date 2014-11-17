@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html lang="en" ng-app="readingList" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>AngularJS Reading List</title>
+  <meta name="description" content="">
+  <meta name="viewpoint" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="bootstrap.min.css">
+
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="app.js"></script>
+</head>
+<body ng-app="readingList">
+  <h1>My Angular Reading List</h1>
+  <div class="row" ng-controller="ReadListController as readingListCtrl">
+      <button class="btn btn-default" ng-click="reviewFormCtrl.showForm=!reviewFormCtrl.showForm">{{reviewFormCtrl.showForm?"Cancel":"Create Review"}}</button>
+       <hr/>
+         <review-form ng-show="reviewFormCtrl.showForm" books="readingListCtrl.books" genres="readingListCtrl.genres"></review-form>
+       <hr/>
+       <h1>{{reviewFormCtrl.showForm}}</h1>
+
+       <ul class="list-unstyled col-sm-8">
+        <li class="book row" ng-repeat="book in readingListCtrl.books">
+         <book-cover></book-cover>
+
+          <div class="col-sm-9">
+            <h3><a href="http://www.amazon.com/gp/product/{{book.isbn}}">{{book.title}}</a></h3>
+
+            <cite class="text-muted">Written by {{book.author}}</cite>
+
+            <p>{{book.review}}</p>
+
+            <book-genres genres="book.genres"></book-genres>
+          </div>
+        </li>
+      </ul>
+  <div>
+</body>
+</html>
+ 
