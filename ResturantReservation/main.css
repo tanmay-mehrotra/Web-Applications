@@ -1,0 +1,22 @@
+
+label{
+	display: block;
+}
+.desc{
+   display: inline;
+}
+img{
+	float:right;
+}
+body{
+	padding:15px;
+}
+
+.a {
+	color:blue;
+}
+
+
+.c > .b{
+	color:yellow;
+}
