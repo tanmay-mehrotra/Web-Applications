@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="flickerApp" class="no-js">
+	<head>
+		<title>Fetching Flicker images using Ajax</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="lightbox/css/lightbox.css" rel="stylesheet"/>
+		<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+		<style type="text/css">
+			.bs-example{
+				margin:20px;
+			}
+			a[ng-click] {
+            	color: blue ;
+            	cursor: pointer ;
+            	text-decoration: underline ;
+            }
+		</style>
+	</head>
+	<body ng-app="flickerApp">
+		<div class="bs-example" ng-controller="FlickerAppController as flickerAppCtrl">
+			<h4>Click on any user to see their flicker images</h4>
+			<ul id="users">
+			   <li id="people.id" ng-repeat="people in peoples">
+				 <a ng-click="loadFlickerImages(people.id)">{{people.name}}</a> 
+			   </li>
+			</ul>
+
+			<div class="container">
+			   <div class="row" style='margin-top:5px;margin-bottom:5px;' ng-repeat="row_of_images in images">
+				  <div class="col-xs-3" ng-repeat="image in row_of_images" ng-bind-html="image"></div>
+			   </div>
+			</div>
+		</div>	
+		<!-- all scripts -->
+		<script type="text/javascript" src="lightbox/js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="lightbox/js/lightbox.min.js"></script>
+		<script type="text/javascript" src="angular.min.js"></script>
+		<script type="text/javascript" src="app.js"></script>
+	</body>
+</html>
